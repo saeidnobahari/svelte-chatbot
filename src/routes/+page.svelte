@@ -19,6 +19,26 @@
 	};
 	const openai_api_key = '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';
 
+	const generateAnswer = async (/** @type {string} */ prompt) => {
+		console.log('prompt: ' + prompt)
+		const params = {
+			prompt: prompt
+		};
+		const params_ = { ...DEFAULT_PARAMS, ...params };
+		const requestOptions = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + String(openai_api_key)
+			},
+			body: JSON.stringify(params_)
+		};
+		const response = await fetch('https://api.openai.com/v1/completions', requestOptions);
+		const data = await response.json();
+		console.log("data", data)
+		return data.choices[0].text;
+	};
+
 	const sendMessage = async () => {
 		if (prompt !== '') {
 			messages = [...messages, { prompt }];
