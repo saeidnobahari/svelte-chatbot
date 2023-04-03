@@ -17,7 +17,7 @@
 		frequency_penalty: 0,
 		presence_penalty: 0
 	};
-	const openai_api_key = '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';
+	const openai_api_key = 'sk-xxxxx';
 
 	const generateAnswer = async (/** @type {string} */ prompt) => {
 		console.log('prompt: ' + prompt)
